@@ -1,9 +1,12 @@
 import "@styles/globals.css";
 import { Children } from "react";
+import Provider from "@components/Provider";
+import Nav from "@components/Nav";
 
 export const metadata = {
   title: "gpt-prompty",
-  description: "Learn the best prompts for GPT",
+  description:
+    "Find out about the best prompts for Chat-GPT and get the best out of it!",
 };
 
 const Rootlayout = ({ children }) => {
@@ -14,7 +17,10 @@ const Rootlayout = ({ children }) => {
           <div className="gradient" />
         </div>
 
-        <main className="app">{children}</main>
+        <main className="app">
+          <Nav />
+          {children}
+        </main>
       </body>
     </html>
   );
