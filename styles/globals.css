@@ -1,12 +1,10 @@
+
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* 
-  Note: The styles for this gradient grid background is heavily inspired by the creator of this amazing site (https://dub.sh) – all credits go to them! 
-*/
 
 .main {
   width: 100vw;
@@ -19,7 +17,7 @@
 }
 
 .main:before {
-  background: radial-gradient(circle, rgba(2, 0, 36, 0) 0, #fafafa 100%);
+  background: radial-gradient(circle, rgba(2, 0, 36, 0) 0, #4ba040 100%); 
   position: absolute;
   content: "";
   z-index: 2;
@@ -30,7 +28,7 @@
 
 .main:after {
   content: "";
-  background-image: url("/assets/images/grid.svg");
+  /* background-image: url("/assets/images/grid.svg"); */
   z-index: 1;
   position: absolute;
   width: 100%;
@@ -47,14 +45,14 @@
   max-width: 640px;
   background-image: radial-gradient(
       at 27% 37%,
-      hsla(215, 98%, 61%, 1) 0px,
+      rgb(70, 202, 44) 0px, 
       transparent 0%
     ),
-    radial-gradient(at 97% 21%, hsla(125, 98%, 72%, 1) 0px, transparent 50%),
-    radial-gradient(at 52% 99%, hsla(354, 98%, 61%, 1) 0px, transparent 50%),
-    radial-gradient(at 10% 29%, hsla(256, 96%, 67%, 1) 0px, transparent 50%),
-    radial-gradient(at 97% 96%, hsla(38, 60%, 74%, 1) 0px, transparent 50%),
-    radial-gradient(at 33% 50%, hsla(222, 67%, 73%, 1) 0px, transparent 50%),
+    radial-gradient(at 97% 21%, hsla(60, 98%, 72%, 1) 0px, transparent 50%),
+    radial-gradient(at 52% 99%, hsla(29, 98%, 61%, 1) 0px, transparent 50%),
+    radial-gradient(at 10% 29%, rgb(42, 190, 66) 0px, transparent 50%),
+    radial-gradient(at 97% 96%, hsla(190, 60%, 74%, 1) 0px, transparent 50%),
+    radial-gradient(at 33% 50%, hsla(150, 67%, 73%, 1) 0px, transparent 50%),
     radial-gradient(at 79% 53%, hsla(343, 68%, 79%, 1) 0px, transparent 50%);
   position: absolute;
   content: "";
@@ -78,11 +76,14 @@
 }
 
 .black_btn {
-  @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
+  background: #0c0c0c; 
+  border: 1px solid #53cd43; 
 }
 
 .outline_btn {
-  @apply rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center;
+  background: transparent; 
+  border: 1px solid #0f0f0f;
+  color: #55c846; 
 }
 
 .head_text {
@@ -172,3 +173,7 @@
 .flex-between {
   @apply flex justify-between items-center;
 }
+
+
+
+
