@@ -1,7 +1,10 @@
+"use client";
+
 import "@styles/globals.css";
-import { Children } from "react";
 import Provider from "@components/Provider";
 import Nav from "@components/Nav";
+
+import { Children } from "react";
 
 export const metadata = {
   title: "gpt-prompty",
@@ -9,7 +12,7 @@ export const metadata = {
     "Find out about the best prompts for Chat-GPT and get the best out of it!",
 };
 
-const Rootlayout = ({ children }) => {
+const RootLayout = ({ children }) => {
   return (
     <html lang="en">
       <body>
@@ -19,7 +22,7 @@ const Rootlayout = ({ children }) => {
           </div>
 
           <main className="app">
-            <Nav />
+            {/* <Nav /> */}
             {children}
           </main>
         </Provider>
@@ -28,4 +31,4 @@ const Rootlayout = ({ children }) => {
   );
 };
 
-export default Rootlayout;
+export default RootLayout;

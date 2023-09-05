@@ -1,11 +1,11 @@
 "use client";
 
-import React from "react";
 import { useState, useEffect } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
 import build from "next/dist/build";
+import Provider from "./Provider";
 
 const Nav = () => {
   const isUserLoggedIn = true;
@@ -20,6 +20,7 @@ const Nav = () => {
 
       setProviders(response);
     };
+
     setProviders();
   }, []);
 
@@ -32,7 +33,7 @@ const Nav = () => {
           alt="gpt-prompty logo"
           width={100}
           height={60}
-          className="object-container"
+          className="object-contain"
         />
       </Link>
 
@@ -52,7 +53,7 @@ const Nav = () => {
               <Image
                 src="/public/assets/images/profile.svg "
                 alt="profile"
-                width={37}
+                width={39}
                 height={37}
                 className="rounded-full"
               />
@@ -61,7 +62,7 @@ const Nav = () => {
         ) : (
           <>
             {providers &&
-              Object.values(providers).map((providers) => (
+              Object.values(providers).map((provider) => (
                 <button
                   type="button"
                   key={provider.name}
@@ -79,18 +80,14 @@ const Nav = () => {
 
       <div className="sm:hidden flex relative">
         {isUserLoggedIn ? (
-          <div className="flex ">
+          <div className="flex">
             <Image
               src="/public/assets/images/profile.svg "
               alt="profile"
-              width={37}
+              width={39}
               height={37}
               className="rounded-full"
-              onClick={() =>
-                setToggleDropdown((prev) => {
-                  !prev;
-                })
-              }
+              onClick={() => setToggleDropdown((prev) => !prev)}
             />
             {toggleDropdown && (
               <div className="dropdown">
@@ -126,7 +123,7 @@ const Nav = () => {
         ) : (
           <>
             {providers &&
-              Object.values(providers).map((providers) => (
+              Object.values(providers).map((provider) => (
                 <button
                   type="button"
                   key={provider.name}

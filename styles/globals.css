@@ -71,9 +71,9 @@
 
 /* Tailwind Styles */
 
-.app {
+ .app {
   @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
-}
+} 
 
 .black_btn {
   background: #0c0c0c; 
@@ -172,8 +172,5 @@
 
 .flex-between {
   @apply flex justify-between items-center;
-}
-
-
-
+} 
 
