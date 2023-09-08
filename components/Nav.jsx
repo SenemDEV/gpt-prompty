@@ -1,143 +1,143 @@
-"use client";
+// "use client";
 
-import { useState, useEffect } from "react";
-import { signIn, signOut, useSession, getProviders } from "next-auth/react";
-import Link from "next/link";
-import Image from "next/image";
-import build from "next/dist/build";
-import Provider from "./Provider";
+// import { useState, useEffect } from "react";
+// import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+// import Link from "next/link";
+// import Image from "next/image";
+// import build from "next/dist/build";
+// import Provider from "@components/Provider";
 
-const Nav = () => {
-  const isUserLoggedIn = true;
+// const Nav = () => {
+//   const { data: session } = useSession();
 
-  const [providers, setProviders] = useState(null);
+//   const [providers, setProviders] = useState(null);
 
-  const [toggleDropdown, setToggleDropdown] = useState(false);
+//   const [toggleDropdown, setToggleDropdown] = useState(false);
 
-  useEffect(() => {
-    const setProviders = async () => {
-      const response = await getProviders();
+//   useEffect(() => {
+//     const setUpProviders = async () => {
+//       const response = await getProviders();
 
-      setProviders(response);
-    };
+//       setProviders(response);
+//     };
 
-    setProviders();
-  }, []);
+//     setUpProviders();
+//   }, []);
 
-  return (
-    <nav className="flex-between w-full mb-16 pt-3">
-      <Link href="/" className="flex gap-2 flex-center">
-        {/* <span className="logo bg-black-100">GPT-prompty</span> */}
-        <Image
-          src="/assets/images/logo.svg"
-          alt="gpt-prompty logo"
-          width={100}
-          height={60}
-          className="object-contain"
-        />
-      </Link>
+//   return (
+//     <nav className="flex-between w-full mb-16 pt-3">
+//       <Link href="/" className="flex gap-2 flex-center">
+//         {/* <span className="logo bg-black-100">GPT-prompty</span> */}
+//         <Image
+//           src="/assets/images/logo.svg"
+//           alt="gpt-prompty logo"
+//           width={100}
+//           height={60}
+//           className="object-contain"
+//         />
+//       </Link>
 
-      {/* Desktop Navigation */}
-      <div className="sm:flex hidden">
-        {isUserLoggedIn ? (
-          <div className="flex gap-3 md:gap-5">
-            <Link href="/create-prompt" className="black_btn">
-              Create Post
-            </Link>
+//       {/* Desktop Navigation */}
+//       <div className="sm:flex hidden">
+//         {session?.user ? (
+//           <div className="flex gap-3 md:gap-5">
+//             <Link href="/create-prompt" className="black_btn">
+//               Create Post
+//             </Link>
 
-            <button type="button" onClick={signOut} className="outline_btn">
-              Sign Out
-            </button>
+//             <button type="button" onClick={signOut} className="outline_btn">
+//               Sign Out
+//             </button>
 
-            <Link href="/profile">
-              <Image
-                src="/public/assets/images/profile.svg "
-                alt="profile"
-                width={39}
-                height={37}
-                className="rounded-full"
-              />
-            </Link>
-          </div>
-        ) : (
-          <>
-            {providers &&
-              Object.values(providers).map((provider) => (
-                <button
-                  type="button"
-                  key={provider.name}
-                  onClick={() => signIn(provider.id)}
-                  className="black_btn"
-                >
-                  Sign In
-                </button>
-              ))}
-          </>
-        )}
-      </div>
+//             <Link href="/profile">
+//               <Image
+//                 src="/public/assets/images/profile.svg "
+//                 alt="profile"
+//                 width={39}
+//                 height={37}
+//                 className="rounded-full"
+//               />
+//             </Link>
+//           </div>
+//         ) : (
+//           <>
+//             {providers &&
+//               Object.values(providers).map((provider) => (
+//                 <button
+//                   type="button"
+//                   key={provider.name}
+//                   onClick={() => signIn(provider.id)}
+//                   className="black_btn"
+//                 >
+//                   Sign In
+//                 </button>
+//               ))}
+//           </>
+//         )}
+//       </div>
 
-      {/* Mobile Navigation */}
+//       {/* Mobile Navigation */}
 
-      <div className="sm:hidden flex relative">
-        {isUserLoggedIn ? (
-          <div className="flex">
-            <Image
-              src="/public/assets/images/profile.svg "
-              alt="profile"
-              width={39}
-              height={37}
-              className="rounded-full"
-              onClick={() => setToggleDropdown((prev) => !prev)}
-            />
-            {toggleDropdown && (
-              <div className="dropdown">
-                <Link
-                  href="/profile"
-                  className="dropdown_link"
-                  onClick={() => setToggleDropdown(false)}
-                >
-                  My Profile
-                </Link>
+//       <div className="sm:hidden flex relative">
+//         {session?.user ? (
+//           <div className="flex">
+//             <Image
+//               src="/public/assets/images/profile.svg "
+//               alt="profile"
+//               width={39}
+//               height={37}
+//               className="rounded-full"
+//               onClick={() => setToggleDropdown((prev) => !prev)}
+//             />
+//             {toggleDropdown && (
+//               <div className="dropdown">
+//                 <Link
+//                   href="/profile"
+//                   className="dropdown_link"
+//                   onClick={() => setToggleDropdown(false)}
+//                 >
+//                   My Profile
+//                 </Link>
 
-                <Link
-                  href="/create-prompt"
-                  className="dropdown_link"
-                  onClick={() => setToggleDropdown(false)}
-                >
-                  Create Prompt
-                </Link>
+//                 <Link
+//                   href="/create-prompt"
+//                   className="dropdown_link"
+//                   onClick={() => setToggleDropdown(false)}
+//                 >
+//                   Create Prompt
+//                 </Link>
 
-                <button
-                  type="button"
-                  onClick={() => {
-                    setToggleDropdown(false);
-                    signOut();
-                  }}
-                  className="mt-5 w-full black_btn"
-                >
-                  Sign out
-                </button>
-              </div>
-            )}
-          </div>
-        ) : (
-          <>
-            {providers &&
-              Object.values(providers).map((provider) => (
-                <button
-                  type="button"
-                  key={provider.name}
-                  onClick={() => signIn(provider.id)}
-                  className="black_btn"
-                >
-                  Sign In
-                </button>
-              ))}
-          </>
-        )}
-      </div>
-    </nav>
-  );
-};
+//                 <button
+//                   type="button"
+//                   onClick={() => {
+//                     setToggleDropdown(false);
+//                     signOut();
+//                   }}
+//                   className="mt-5 w-full black_btn"
+//                 >
+//                   Sign out
+//                 </button>
+//               </div>
+//             )}
+//           </div>
+//         ) : (
+//           <>
+//             {providers &&
+//               Object.values(providers).map((provider) => (
+//                 <button
+//                   type="button"
+//                   key={provider.name}
+//                   onClick={() => signIn(provider.id)}
+//                   className="black_btn"
+//                 >
+//                   Sign In
+//                 </button>
+//               ))}
+//           </>
+//         )}
+//       </div>
+//     </nav>
+//   );
+// };
 
-export default Nav;
+// export default Nav;
