@@ -1,10 +1,8 @@
 "use client";
 
 import "@styles/globals.css";
-import Provider from "@components/Provider";
 import Nav from "@components/Nav";
-
-import { Children } from "react";
+import Provider from "@components/Provider";
 
 export const metadata = {
   title: "gpt-prompty",
