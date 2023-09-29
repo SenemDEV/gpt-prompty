@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 import Form from "@components/Form";
 
-const UpdatePrompt = () => {
+const EditPrompt = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const promptId = searchParams.get("id");
@@ -31,7 +31,7 @@ const UpdatePrompt = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    if (!promptId) return alert("Missing PromptId!");
+    if (!promptId) return alert("Prompt not found!");
 
     try {
       const response = await fetch(`/api/prompt/${promptId}`, {
@@ -63,4 +63,4 @@ const UpdatePrompt = () => {
   );
 };
 
-export default UpdatePrompt;
+export default EditPrompt;
